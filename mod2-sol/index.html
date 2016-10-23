@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-sm-6" ng-controller='ToBuyCtrl as lc'>
+     <h2>To Buy:</h2>
+     <ul>
+       <li ng-repeat="i in lc.tobuy">Buy {{ i.qty }} {{ i.name }}
+         <button ng-click="lc.buy($index)" class="btn btn-default">
+           <span class="glyphicon glyphicon-ok"></span> Bought
+         </button>
+       </li>
+     </ul>
+     <div class="emptyMessage" ng-hide="lc.tobuy.length">Everything is bought!</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-sm-6" ng-controller='BoughtCtrl as lc'>
+     <h2>Already Bought:</h2>
+     <ul>
+       <li ng-repeat="i in lc.bought">Bought {{ i.qty }} {{ i.name }}
+         <button ng-click="lc.return($index)" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok"></span> Return
+          </button>
+       </li>
+     </ul>
+     <div class="emptyMessage" ng-hide="lc.bought.length">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
