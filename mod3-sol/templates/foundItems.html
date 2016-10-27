@@ -3,7 +3,9 @@
     <col class="col-md-1">
     <col class="col-md-2">
     <col class="col-md-1">
-    <col class="col-md-6">
+    <col class="col-md-4">
+    <col class="col-md-1">
+    <col class="col-md-1">
     <col class="col-md-2">
   </colgroup>
   <thead>
@@ -12,6 +14,8 @@
       <th>Name</th>
       <th>Short Name</th>
       <th>Description</th>
+      <th>Portions</th>
+      <th>Price</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -21,6 +25,14 @@
       <td>{{item.name}}</td>
       <td>{{item.short_name}}</td>
       <td>{{item.description}}</td>
+      <td>
+        <span ng-hide="item.large_portion_name == null">{{item.large_portion_name}} /</span>
+        <span ng-hide="item.small_portion_name == null">{{item.small_portion_name}}</span>
+      </td>
+      <td>
+        <span ng-hide="item.price_large == null">{{item.price_large | currency }}</span>
+        <span ng-show="item.price_large != null && item.price_small != null">/</span>
+        <span ng-hide="item.price_small == null">{{item.price_small | currency}}</span></td>
       <td>
         <button ng-click="action({index:$index})">
           <span class="glyphicon glyphicon-remove"></span>{{ actionMsg }}

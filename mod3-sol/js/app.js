@@ -100,7 +100,13 @@ function MenuSearchService(){
       service.found = service.menu.menu_items.filter(function (item){
         return item.description.toLowerCase().includes(service.searchStr);
       });
-
+      /*
+      for (var i in service.found){
+        console.log("item "+i+": " +service.found[i].name + " lg portion = "+
+          service.found[i].large_portion_name+ " null = "+
+          (service.found[i].large_portion_name==null));
+      }
+      */
     }
     return service.found;
   }
