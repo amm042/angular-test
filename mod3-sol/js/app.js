@@ -68,6 +68,7 @@ function foundItems(){
 
     scope: {
         foundItems: '<',  // one way
+        //foundItems: '=',  // two way
         actionMsg: '@',   // string
         action: '&'       // method
     },

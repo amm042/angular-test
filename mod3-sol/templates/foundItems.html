@@ -20,7 +20,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in foundItems | orderBy: 'short_name'">
+    <!-- <tr ng-repeat="item in foundItems | orderBy: 'short_name'"> -->
+    <tr ng-repeat="item in foundItems">
       <th>{{$index}}</th>
       <td>{{item.name}}</td>
       <td>{{item.short_name}}</td>
