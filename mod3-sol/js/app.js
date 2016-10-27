@@ -11,10 +11,16 @@ angular.module('NarrowItDownApp', [])
 loadMenu.$inject = ['menuUrl', '$http', 'MenuSearchService']
 function loadMenu(menuUrl, $http, menuSearchService){
   console.log("loading " + menuUrl);
+  var a = performance.now();
+
   $http({url: menuUrl})
   .then (function (resp){
+    var b = performance.now();
+    console.log("http request took " + (b-a) + " ms.");
     menuSearchService.AddMenu(resp.data)
   }, function(error){
+    var b = performance.now();
+    console.log("http request took " + (b-a) + " ms.");
     console.log("Oh no -- "+error);
   });
 }
