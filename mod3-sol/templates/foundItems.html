@@ -3,8 +3,8 @@
     <col class="col-md-1">
     <col class="col-md-2">
     <col class="col-md-1">
-    <col class="col-md-5">
-    <col class="col-md-3">
+    <col class="col-md-6">
+    <col class="col-md-2">
   </colgroup>
   <thead>
     <tr ng-show='foundItems.length'>
@@ -16,14 +16,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in foundItems">
+    <tr ng-repeat="item in foundItems | orderBy: 'short_name'">
       <th>{{$index}}</th>
       <td>{{item.name}}</td>
       <td>{{item.short_name}}</td>
       <td>{{item.description}}</td>
       <td>
-        <button ng-click="onRemove({index:$index})">
-          <span class="glyphicon glyphicon-remove"></span> Don't want this one!
+        <button ng-click="action({index:$index})">
+          <span class="glyphicon glyphicon-remove"></span>{{ actionMsg }}
         </button>
       </td>
     </tr>

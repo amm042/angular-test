@@ -39,14 +39,18 @@ function NarrowItDownController(menuSearchService){
       me.emptySearch = true;
       menuSearchService.found = []
       me.inSearch = false;
+      console.log("empty search string, removing all results.")
     }else{
       me.inSearch = true;
       console.log("searching for " + me.searchBox + "...");
-      me.emptySearch = menuSearchService.Search(me.searchBox).length == 0;
+      var num = menuSearchService.Search(me.searchBox).length
+      me.emptySearch =  num == 0;
+      console.log("got " + num + " matches.")
     }
   }
   me.onRemove = function(index){
     menuSearchService.remove(index);
+    //might have removed the last item...
     me.emptySearch = menuSearchService.found.length == 0;
   }
 }
@@ -57,23 +61,11 @@ function foundItems(){
     restrict: 'E',
 
     scope: {
-        foundItems: '<',
-        onRemove: '&'
+        foundItems: '<',  // one way
+        actionMsg: '@',   // string
+        action: '&'       // method
     },
-/*
-    controller: nullController,
-    controllerAs: 'menu',
-    bindToController: true
-*/
   };
-}
-function nullController(){
-  var me = this;
-
-  me.OnRemove = function(indeX){
-    console.log("nullController on remove")
-    console.log(index)
-  }
 }
 
 function MenuSearchService(){
@@ -82,8 +74,7 @@ function MenuSearchService(){
   service.menu = null;
   service.searchStr = "";
   service.AddMenu = function(menu){
-    console.log("adding menu data: ");
-    console.log(menu);
+
     service.menu = menu;
     /* there was a search before the menu was loaded... */
     if (service.searchStr != "")
@@ -103,7 +94,7 @@ function MenuSearchService(){
       service.found = service.menu.menu_items.filter(function (item){
         return item.description.toLowerCase().includes(service.searchStr);
       });
-      console.log(service.found);
+
     }
     return service.found;
   }
