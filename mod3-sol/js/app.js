@@ -88,10 +88,14 @@ function MenuSearchService(){
       service.Search(service.searchStr);
 
   }
-  service.remove = function(index){
-    console.log("service onremove:")
-    console.log(service.found[index])
-    service.found.splice(index,1);
+  service.remove = function(item){
+    
+    // find the item
+    var i = service.found.findIndex(function(x){
+      return x.short_name == item;
+    })
+    console.log("remove " + item + " is at index " + i + " == " + service.found[i].name)
+    service.found.splice(i,1);
   }
   service.Search = function(searchStr){
 

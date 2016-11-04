@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>My Chinese Restaurants</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body ng-app="MenuApp">
+    <div id="wrapper">
+      <div id="header">
+        <h1><a href="#"><img src="images/logo.gif" alt="" /></a></h1>
+        <ul id="nav">
+          <li><a ui-sref="home" ui-sref-active="activeView">HOME</a> &nbsp;|&nbsp; </li>
+          <li><a ui-sref="categories" ui-sref-active="activeView">MENU</a> &nbsp;|&nbsp; </li>
+        </ul>
+        <!-- end nav -->
+        <div id="welcome">
+          <h2><img src="images/title_welcome.gif" alt="Welcome to our Restaurant" /></h2>
+          <p>Some awesome text here.</p>
+        </div>
+        <!-- end welcome -->
+      </div>
+      <!-- end header -->
+
+      <div id="body">
+          <ui-view></ui-view>
+      </div>
+      <!-- end body -->
+      <log-events></log-events>
+    </div>
+    <!-- end wrapper -->
+    <div id="footer"> Powered by <a href="http://www.freewebsitetemplates.com">Free Website Templates</a> </div>
+    <!-- end footer -->
+
+    <!-- Libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- Modules -->
+    <script src="src/Data/Data.module.js"></script>
+    <script src="src/MenuApp/MenuApp.module.js"></script>
+
+    <!-- Data components -->
+    <script src="src/Data/MenuData.service.js"></script>
+
+    <!-- MenuApp components -->
+    <script src="src/MenuApp/Categories.controller.js"></script>
+    <script src="src/MenuApp/Categories.component.js"></script>
+
+    <script src="src/MenuApp/Items.controller.js"></script>
+    <script src="src/MenuApp/Items.component.js"></script>
+
+
+
+
+
+
+
+    <!-- Routes -->
+    <script src="src/routes.js"></script>
+
+  </body>
+</html>
